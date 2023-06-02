@@ -1,14 +1,41 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
-import styles from './about.style'
+import { COLORS, FONT, SIZES } from '../../../constants'
 
-const About = () => {
+const About = ({info}) => {
   return (
-    <View>
-      <Text>About</Text>
+    <View style={styles.container}>
+      <Text style={styles.headText}>About the jog :</Text>
+      <View style={styles.contentBox}>
+     <Text style={styles.contextText}>{info}</Text>
+      </View>
     </View>
   )
 }
 
 export default About
+
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: SIZES.large,
+    backgroundColor: "#FFF",
+    borderRadius: SIZES.medium,
+    padding: SIZES.medium,
+  },
+  headText: {
+    fontSize: SIZES.large,
+    color: COLORS.primary,
+    fontFamily: FONT.bold,
+  },
+  contentBox: {
+    marginVertical: SIZES.small,
+  },
+  contextText: {
+    fontSize: SIZES.medium - 2,
+    color: COLORS.gray,
+    fontFamily: FONT.regular,
+    marginVertical: SIZES.small / 1.25,
+  },
+});

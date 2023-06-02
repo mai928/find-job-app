@@ -1,14 +1,36 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
+import { COLORS, SIZES } from '../../../constants';
 
-import styles from './screenheader.style'
 
-const ScreenHeaderBtn = () => {
-  return (
-    <View>
-      <Text>ScreenHeaderBtn</Text>
-    </View>
-  )
-}
+const ScreenHeaderBtn = ({ iconUrl, dimension ,handlePress }) => {
+	return (
+		<TouchableOpacity onPress={handlePress} style={styles.btnContainer}>
+			<Image
+				source={iconUrl}
+				resizeMode="cover"
+				style={styles.btnImg(dimension)}
+			/>
+		</TouchableOpacity>
+	);
+};
 
 export default ScreenHeaderBtn
+
+const styles = StyleSheet.create({
+	btnContainer: {
+	  width: 40,
+	  height: 40,
+	  backgroundColor: COLORS.white,
+	  borderRadius: SIZES.small / 1.25,
+	  justifyContent: "center",
+	  alignItems: "center",
+	},
+	btnImg: (dimension) => ({
+	  width: dimension,
+	  height: dimension,
+	  borderRadius: SIZES.small / 1.25,
+	}),
+  });
+  
+  
